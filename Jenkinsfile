@@ -27,7 +27,7 @@ pipeline {
         stage('Deliver') { 
             steps {
                 dir('backend/centraal-surfplatform-backend') {
-                    bat 'dotnet publish centraal-surfplatform-backend --no-restore -o published'
+                    bat 'dotnet publish --no-restore -o published'
                 }
             }
             post {
