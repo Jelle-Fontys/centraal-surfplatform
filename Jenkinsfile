@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 dir('backend/centraal-surfplatform-backend') {
-                    sh 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"' 
+                    bat 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"' 
                 }
             }
             post {
