@@ -27,7 +27,7 @@ pipeline {
         stage('Deliver') { 
             steps {
                 dir('backend/centraal-surfplatform-backend') {
-                    bat 'dotnet publish --no-restore -o published'
+                    bat 'dotnet publish ./API/API.csproj --no-restore -c Release -o published'
                 }
             }
             post {
