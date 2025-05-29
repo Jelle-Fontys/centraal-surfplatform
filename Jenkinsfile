@@ -20,7 +20,7 @@ pipeline {
             }
             post {
                 always {
-                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/*.xml']], sourceDirectories: [[path: '**/TestResults/**/coverage.cobertura.xml']])  
+                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/TestResults/**/coverage.cobertura.xml']])  
                 }
             }
         }
