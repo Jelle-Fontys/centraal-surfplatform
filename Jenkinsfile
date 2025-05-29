@@ -32,7 +32,7 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts 'published/*.*' 
+                    archiveArtifacts artifacts: 'backend/published/**' 
                 }
             }
         }
