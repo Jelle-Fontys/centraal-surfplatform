@@ -9,6 +9,17 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps {
+                dir('backend/centraal-surfplatform-backend') {
+                    sh 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"' 
+                }
+            }
+            post {
+                always {
+                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/*.xml']], sourceDirectories: [[path: 'SimpleWebApi.Test/TestResults']])  
+                }
+            }
+        }
     }
 }
-
