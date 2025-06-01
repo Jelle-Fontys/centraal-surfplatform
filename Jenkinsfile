@@ -7,7 +7,7 @@ pipeline {
         stage('Build') { 
             steps {
                 dir('backend/centraal-surfplatform-backend') {
-                    sh '/usr/bin/dotnet restore'
+                    sh 'dotnet restore'
                     sh 'dotnet build --no-restore' 
                 }
             }
