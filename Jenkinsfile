@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        PATH = "/usr/bin:$PATH"
-    }
     options {
         skipStagesAfterUnstable()
     }
@@ -10,7 +7,7 @@ pipeline {
         stage('Build') { 
             steps {
                 dir('backend/centraal-surfplatform-backend') {
-                    sh 'echo $PATH && dotnet --info'
+                    sh 'dotnet restore'
                     sh 'dotnet build --no-restore' 
                 }
             }
