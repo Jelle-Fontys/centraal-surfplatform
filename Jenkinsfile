@@ -7,15 +7,15 @@ pipeline {
         stage('Build') { 
             steps {
                 dir('backend/centraal-surfplatform-backend') {
-                    bat 'dotnet restore' 
-                    bat 'dotnet build --no-restore' 
+                    sh 'dotnet restore' 
+                    sh 'dotnet build --no-restore' 
                 }
             }
         }
         stage('Test') {
             steps {
                 dir('backend/centraal-surfplatform-backend') {
-                    bat 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"' 
+                    sh 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"' 
                 }
             }
             post {
@@ -24,17 +24,17 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') { 
-            steps {
-                dir('backend/centraal-surfplatform-backend') {
-                    bat 'dotnet publish ./API/API.csproj --no-restore -c Release -o ../published'
-                }
-            }
-            post {
-                success {
-                    archiveArtifacts artifacts: 'backend/published/**' 
-                }
-            }
-        }
+        // stage('Deliver') { 
+        //     steps {
+        //         dir('backend/centraal-surfplatform-backend') {
+        //             sh 'dotnet publish ./API/API.csproj --no-restore -c Release -o ../published'
+        //         }
+        //     }
+        //     post {
+        //         success {
+        //             archiveArtifacts artifacts: 'backend/published/**' 
+        //         }
+        //     }
+        // }
     }
 }
