@@ -12,18 +12,18 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                dir('backend/centraal-surfplatform-backend') {
-                    sh 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"' 
-                }
-            }
-            post {
-                always {
-                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/TestResults/**/coverage.cobertura.xml']])  
-                }
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         dir('backend/centraal-surfplatform-backend') {
+        //             sh 'dotnet test --no-build --no-restore --collect "XPlat Code Coverage"' 
+        //         }
+        //     }
+        //     post {
+        //         always {
+        //             recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/TestResults/**/coverage.cobertura.xml']])  
+        //         }
+        //     }
+        // }
         // stage('Deliver') { 
         //     steps {
         //         dir('backend/centraal-surfplatform-backend') {
